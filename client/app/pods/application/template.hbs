@@ -1,0 +1,25 @@
+{{nav-main onTransition=(action 'transitionTo') isSidenavOpen=isSidenavOpen}}
+
+<div class="flex layout-column">
+    {{#paper-toolbar}}
+        {{#paper-toolbar-tools}}
+            {{#paper-button onClick=(action (mut isSidenavOpen)) iconButton=true}}
+                {{paper-icon "menu"}}
+            {{/paper-button}}
+            <h2>
+                Sparkle Donkey
+            </h2>
+            <span class="flex"></span>
+            {{#paper-button iconButton=true}}
+                {{paper-icon "more_vert"}}
+            {{/paper-button}}
+        {{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+    {{paper-divider}}
+</div>
+
+<div class="flex layout-column" tabindex="-1" role="main">
+    {{#paper-content flex=true layout-padding=true class="main-content"}}
+        {{outlet}}
+    {{/paper-content}}
+</div>

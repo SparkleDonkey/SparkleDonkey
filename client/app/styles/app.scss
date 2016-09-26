@@ -1,0 +1,19 @@
+$sidenav-default-width: 250px;
+
+// Define desired color palettes.
+$primary: "pink";
+$accent: "light-green";
+$warn: "orange";
+
+@import 'ember-paper';
+
+
+.nav-main {
+    md-list-item {
+        md-icon {
+            margin: 0;
+        }
+        font-size: larger;
+        font-weight: 600;
+    }
+}

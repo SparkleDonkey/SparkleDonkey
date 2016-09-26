@@ -1,0 +1,7 @@
+/**
+ * This task invokes the client server - simply an alias for `ember server`
+ */
+task client(type: Exec) {
+    workingDir './client'
+    commandLine 'ember', 'server'
+}
