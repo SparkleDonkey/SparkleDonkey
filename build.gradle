@@ -5,3 +5,34 @@ task client(type: Exec) {
     workingDir './client'
     commandLine 'ember', 'server'
 }
+
+/**
+ * This task invokes the server locally
+ */
+task server(type: Exec) {
+    workingDir './server'
+    commandLine 'npm', 'start'
+}
+
+/**
+ * This task invokes the server locally
+ */
+task prepareServer(type: Exec) {
+    workingDir './server'
+    commandLine 'npm', 'install'
+}
+
+task prepareClientNPM(type: Exec) {
+    workingDir './client'
+    commandLine 'npm', 'install'
+}
+
+task prepareClientBower(type: Exec) {
+    workingDir './client'
+    commandLine 'bower', 'install'
+}
+
+task prepare << {
+    println 'Finished preparing project'
+}
+prepare.dependsOn prepareServer, prepareClientNPM, prepareClientBower

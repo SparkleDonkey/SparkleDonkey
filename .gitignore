@@ -1,6 +1,7 @@
 *~
 .idea
 *.iml
+dist
 
 *.swp
 .gradle

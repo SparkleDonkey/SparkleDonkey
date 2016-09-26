@@ -1,0 +1,33 @@
+{
+  "name": "sparkledonkey-server",
+  "version": "0.1.0-SNAPSHOT",
+  "description": "",
+  "main": "scripts/server.js",
+  "scripts": {
+    "start": "npm run build && node ./scripts/server.js --env dev --port 1337",
+    "build": "(rm -rf dist || true) && ./node_modules/.bin/broccoli build dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^0.8.2",
+    "body-parser": "^1.12.3",
+    "core-object": "^2.0.6",
+    "express": "^4.12.3",
+    "express-session": "^1.11.1",
+    "glob": "^7.1.0",
+    "method-override": "^2.3.2",
+    "minimist": "^1.1.1",
+    "moment": "^2.10.3",
+    "oauth": "^0.9.12",
+    "validate-express": "^0.0.3"
+  },
+  "devDependencies": {
+    "broccoli": "^0.16.2",
+    "broccoli-babel-transpiler": "^5.0.0",
+    "broccoli-cli": "^1.0.0",
+    "broccoli-merge-trees": "^1.1.4",
+    "broccoli-static-compiler": "^0.2.1"
+  }
+}
