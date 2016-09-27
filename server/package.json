@@ -21,6 +21,7 @@
     "minimist": "^1.2.0",
     "moment": "^2.15.1",
     "oauth": "^0.9.14",
+    "rethinkdb": "^2.3.3",
     "validate-express": "^0.0.3"
   },
   "devDependencies": {

@@ -1,5 +1,14 @@
 # SparkleDonkey
 
+## Requirements
+
+* [Git](http://git-scm.com/)
+* [Node.js](http://nodejs.org/)
+* [Bower](http://bower.io/)
+* [Ember CLI](http://ember-cli.com/)
+* [RethinkDB](https://rethinkdb.com/)
+
+
 ## Running / Development
 
 There are multiple ways to run the project.
@@ -27,11 +36,17 @@ You can also `cd` into each directory and install the dependencies yourself, but
 
 ### Server
 
-*Using gradle:*
+Start the database, if you don't have a daemon running:
+
+`rethinkdb`
+
+Start the server:
+
+*Using gradle*
 
 * `./gradlew server`
 
-*Using npm directly:*
+*Using npm directly*
 
 * `cd server; npm start`
 

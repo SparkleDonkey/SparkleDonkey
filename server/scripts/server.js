@@ -4,7 +4,8 @@ const minimist = require('minimist'),
     bodyParser = require('body-parser'),
     express = require('express'),
     session = require('express-session'),
-    globSync = require('glob').sync;
+    globSync = require('glob').sync,
+    r = require('rethinkdb');
 
 let argv = minimist(process.argv.slice(2), {
     string: 'port env'.split(' '),
@@ -45,6 +46,13 @@ app.use((err, req, res, next) => {
     }
 });
 
-// Start Server
-console.log(`Listening on port ${argv.port}`);
-app.listen(argv.port);
+r.connect(config.database).then(conn => {
+    app.r = r;
+    app.conn = conn;
+
+    // Start Server
+    console.log(`Listening on port ${argv.port}`);
+    app.listen(argv.port);
+}, err => {
+    throw err;
+});
