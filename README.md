@@ -50,4 +50,4 @@ Start the server:
 
 * `cd server; npm start`
 
-You can visit a test route at [http://localhost:1337/test](http://localhost:1337/test).
+You can visit a test route at [http://localhost:1337/api/test](http://localhost:1337/api/test).

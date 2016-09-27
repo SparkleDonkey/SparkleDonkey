@@ -2,9 +2,26 @@ import CoreObject from "core-object";
 
 export default CoreObject.extend({
 
-    init(app) {
-        this._super.init();
+    init(app, root = '/api') {
+        this._super();
         this.app = app;
+        this.root = root || '';
+    },
+
+    get(route, ...args){
+        this.app.get(this.root + route, ...args);
+    },
+
+    post(route, ...args){
+        this.app.post(this.root + route, ...args);
+    },
+
+    put(route, ...args){
+        this.app.put(this.root + route, ...args);
+    },
+
+    all(route, ...args){
+        this.app.all(this.root + route, ...args);
     },
 
     /**

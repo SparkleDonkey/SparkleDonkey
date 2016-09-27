@@ -3,11 +3,19 @@ import Controller from "../controller";
 export default Controller.extend({
 
     init: function (app) {
-        this._super.init(app);
-        app.get("/test", this.something.bind(this));
+        this._super(app);
+        this.get("/test", this.something.bind(this));
+        this.get("/test/forbid", this.forbid.bind(this));
+        this.get("/test/url", this.url.bind(this));
     },
 
-    something: function (req, res) {
+    something(req, res) {
         return res.json({status: "ok", data: {chuck: "norris", "pika": "chu"}});
+    },
+    forbid(req, res) {
+        return this._super(res);
+    },
+    url(req, res) {
+        return res.json({url: this.getFullUrl(req)});
     }
 });
