@@ -41,6 +41,8 @@ controllers.forEach(c => new c(app));
 
 // add the error handler middleware
 app.use((err, req, res, next) => {
+    console.log("HERE");
+    console.log(err, err.status);
     if (err.name === 'ValidationError') {
         res.status(err.status).json(err);
     }

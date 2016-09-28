@@ -2,6 +2,7 @@
 .idea
 *.iml
 dist
+rethinkdb_data
 
 *.swp
 .gradle

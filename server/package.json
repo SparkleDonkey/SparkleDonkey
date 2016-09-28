@@ -17,12 +17,13 @@
     "express": "^4.14.0",
     "express-session": "^1.14.1",
     "glob": "^7.1.0",
+    "joi": "9.0.4",
     "method-override": "^2.3.6",
     "minimist": "^1.2.0",
     "moment": "^2.15.1",
     "oauth": "^0.9.14",
     "rethinkdb": "^2.3.3",
-    "validate-express": "^0.0.3"
+    "validate-express": "^0.0.4"
   },
   "devDependencies": {
     "broccoli": "^0.16.9",
