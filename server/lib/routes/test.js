@@ -1,6 +1,6 @@
-import Controller from "../controller";
+import Route from "../route";
 
-export default Controller.extend({
+export default Route.extend({
 
     init: function (app) {
         this._super(app);

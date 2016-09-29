@@ -1,6 +1,7 @@
 *~
 .idea
 *.iml
+tmp
 dist
 rethinkdb_data
 

@@ -5,6 +5,7 @@ export default CoreObject.extend({
     init(app, root = '/api') {
         this._super();
         this.app = app;
+        this.db = app.db;
         this.root = root || '';
     },
 

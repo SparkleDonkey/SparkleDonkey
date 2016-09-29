@@ -5,7 +5,7 @@ const minimist = require('minimist'),
     express = require('express'),
     session = require('express-session'),
     globSync = require('glob').sync,
-    r = require('rethinkdb');
+    rdb = require('rethinkdb');
 
 let argv = minimist(process.argv.slice(2), {
     string: 'port env'.split(' '),
@@ -13,10 +13,7 @@ let argv = minimist(process.argv.slice(2), {
     "default": {port: 1337, env: "dev"}
 });
 
-
 let distDir = '../dist';
-
-
 let config = require(`${distDir}/config`);
 
 config.env = argv.env;
@@ -32,29 +29,40 @@ app.use(session({
     saveUninitialized: false
 }));
 
-let controllers = globSync(`${distDir}/controllers/**/*.js`, {cwd: __dirname}).map(require);
+let routes = globSync(`${distDir}/routes/**/*.js`, {cwd: __dirname}).map(require);
 
 app.config = config;
 
-// make new instances of our controllers here
-controllers.forEach(c => new c(app));
-
 // add the error handler middleware
 app.use((err, req, res, next) => {
-    console.log("HERE");
-    console.log(err, err.status);
     if (err.name === 'ValidationError') {
         res.status(err.status).json(err);
+    } else {
+        res.status(500).send(err.message ? err.message : err);
     }
 });
 
-r.connect(config.database).then(conn => {
-    app.r = r;
-    app.conn = conn;
+// TODO use an object container/registry so we can create singleton services and use them throughout the app
 
-    // Start Server
+let DB = require(`${distDir}/rethink`);
+rdb.connect(config.database).then(c => {
+    app.db = new DB(c);
+
+    // TODO some db initialization - make nicer with promises/hashes
+    return rdb.tableList().run(c).then(tables => {
+        if (!tables.includes('users')) {
+            return rdb.tableCreate('users').run(c);
+        }
+    });
+    
+}).then(() => {
+    // make new instances of our controllers here
+    routes.forEach(r => new r(app));
+
     console.log(`Listening on port ${argv.port}`);
     app.listen(argv.port);
-}, err => {
-    throw err;
 });
+
+
+
+

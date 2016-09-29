@@ -1,4 +1,4 @@
-import Controller from "../controller";
+import Route from "../route";
 import joi from "joi";
 import validate from "validate-express";
 
@@ -24,7 +24,7 @@ let validation = {
 };
 
 
-export default Controller.extend({
+export default Route.extend({
 
     init: function (app) {
         this._super(app);
